@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPal</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <h1>Welcome to EcoPal!</h1>
+    <img src="assets/arrow.png">
+
+    <div id="mouse-tracker"></div>
+
+    <script type="text/javascript">
+        // Mouse tracker functionality
+        var mouseTracker = document.getElementById('mouse-tracker');
+        document.addEventListener('mousemove', function (event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            mouseTracker.style.left = (x - 10) + 'px';
+            mouseTracker.style.top = (y - 10) + 'px';
+            mouseTracker.style.backgroundColor = getRandomColor();
+        });
+
+        // Function to generate a random color
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+                window.voiceflow.chat.load({
+                    verify: { projectID: '64d81fd8aa29af0007d8d78c' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production'
+                });
+            };
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+            v.type = "text/javascript";
+            s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
+</body>
+</html>
